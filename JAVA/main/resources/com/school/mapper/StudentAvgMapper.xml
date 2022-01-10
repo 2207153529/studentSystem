@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.school.mapper.StudentAvgMapper">
+
+    <select id="selectInfo" resultType="com.school.jopo.StudentAvg">
+        select * from student_avg
+        <if test="College != null and College != ''">
+            where college=#{College}
+        </if>
+        <if test="Major != null and Major != ''">
+        and major like #{Major}
+        </if>
+        limit #{PageStart}, #{PageEnd};
+    </select>
+    <select id="selectPageSum" resultType="com.school.jopo.StudentAvg">
+        select * from student_avg
+        <if test="College != null and College != ''">
+            where college=#{College}
+        </if>
+        <if test="Major != null and Major != ''">
+            and major like #{Major}
+        </if>;
+    </select>
+</mapper>
